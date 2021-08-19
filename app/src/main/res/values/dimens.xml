@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="jog_item_margin">5dp</dimen>
+    <dimen name="jog_item_padding">5dp</dimen>
+    <dimen name="clicked_item_layout_padding">15dp</dimen>
+
+    <dimen name="text_size_jog_item_distance">20sp</dimen>
+    <dimen name="text_size_jog_item_date">12sp</dimen>
+
+    <dimen name="text_size_clicked_job_fields">20sp</dimen>
+    <dimen name="toolbar_icon_padding">20dp</dimen>
+
+
+</resources>

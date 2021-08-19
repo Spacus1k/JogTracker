@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">JogTracker</string>
+
+    <string name="text_delete">Delete</string>
+    <string name="text_edit">Edit</string>
+    <string name="distance">Distance:</string>
+    <string name="time">Time:</string>
+    <string name="date">Date:</string>
+    <string name="jogs_history">Jogs history</string>
+</resources>
