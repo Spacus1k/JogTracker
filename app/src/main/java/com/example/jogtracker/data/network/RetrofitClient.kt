@@ -1,6 +1,5 @@
 package com.example.jogtracker.data.network
 
-import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -19,11 +18,13 @@ object RetrofitClient {
     private const val CONNECT_TIMEOUT: Long = 60 // 60 seconds
     private const val READ_WRITE_TIMEOUT: Long = 120 // 120 seconds
 
-    private fun getClient(url: String = BASE_URL, context: Context) = Retrofit.Builder()
+    private fun getClient(url: String = BASE_URL) = Retrofit.Builder()
         .baseUrl(url)
         .client(
             OkHttpClient().newBuilder()
-                .addInterceptor(AuthInterceptor(context))
+                .addInterceptor(HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                })
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(READ_WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(READ_WRITE_TIMEOUT, TimeUnit.SECONDS)
@@ -32,7 +33,6 @@ object RetrofitClient {
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 
-    fun getJogTrackerApi(context: Context): JogTrackerApi =
-        getClient(context = context).create(JogTrackerApi::class.java)
+    fun getJogTrackerApi(): JogTrackerApi = getClient().create(JogTrackerApi::class.java)
 
 }

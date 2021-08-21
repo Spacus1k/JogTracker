@@ -2,9 +2,8 @@ package com.example.jogtracker.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class LoginResponse(
+data class Response(
 
-    @SerializedName("response")
-    val loginResponse: Response
+    @SerializedName("access_token")
+    val token: String
 )
-

@@ -24,10 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        sessionManager = SessionManager(this)
-
-        getToken()
-        // getJogs()
         openFragment(
             supportFragmentManager,
             R.id.activity_fragment_container,
@@ -39,55 +35,9 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val viewModel = MainViewModel()
-        viewModel.authUser()
+        viewModel.login()
     }
 
-    private fun getToken() {
-        RetrofitClient.getJogTrackerApi(this).authUserByUUId(LoginRequest("hello")).enqueue(
-            object : Callback<LoginResponse> {
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Log.e("onFailure", "Error logging in")
-                }
-
-                override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>
-                ) {
-                    val loginResponse = response.body()
-
-                    if (response.isSuccessful && loginResponse?.accessToken != null) {
-                        sessionManager.saveToken(loginResponse.accessToken)
-                        Log.e("Token", loginResponse.accessToken)
-                        Log.e("Token", response.toString())
-                    } else {
-                        Log.e("onResponse", "Error logging in")
-                        Log.e("Token", response.toString())
-                        Log.e("Token", loginResponse?.accessToken.toString())
-                    }
-                }
-            }
-        )
-    }
-
-    private fun getJogs() {
-
-        // Pass the token as parameter
-        RetrofitClient.getJogTrackerApi(this)
-            .fetchPosts(token = "Bearer ${sessionManager.fetchAuthToken()}")
-            .enqueue(object : Callback<JogsResponse> {
-                override fun onFailure(call: Call<JogsResponse>, t: Throwable) {
-                    Log.e("jogs", "Get jogs error  ")
-                }
-
-                override fun onResponse(
-                    call: Call<JogsResponse>,
-                    response: Response<JogsResponse>
-                ) {
-                    Log.e("jogs", "jogs received   ")
-                    Log.e("jogs", response.toString())
-                }
-            })
-    }
 
 
 }

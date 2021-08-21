@@ -4,10 +4,7 @@ import com.example.jogtracker.data.network.model.JogsResponse
 import com.example.jogtracker.data.network.model.LoginRequest
 import com.example.jogtracker.data.network.model.LoginResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface JogTrackerApi {
 
@@ -15,7 +12,7 @@ interface JogTrackerApi {
     suspend fun syncJogsAndUsers(): LoginResponse
 
     @POST("v1/auth/uuidLogin")
-    fun authUserByUUId(@Body request: LoginRequest): Call<LoginResponse>
+    fun authUserByUUId(@Body login: LoginRequest): Call <LoginResponse>
 
     @GET("v1/data/sync")
     fun fetchPosts(@Header("Authorization") token: String): Call<JogsResponse>
