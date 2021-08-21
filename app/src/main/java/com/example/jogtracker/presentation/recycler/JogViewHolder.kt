@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jogtracker.databinding.ItemJogBinding
-import com.example.jogtracker.domain.Jog
+import com.example.jogtracker.data.network.model.Jog
 
 class JogViewHolder private constructor(
     binding: ItemJogBinding,

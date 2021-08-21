@@ -9,7 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.jogtracker.R
 import com.example.jogtracker.databinding.FragmentClickedJogBinding
-import com.example.jogtracker.domain.Jog
+import com.example.jogtracker.data.network.model.Jog
 import com.example.jogtracker.presentation.MainViewModel
 import com.example.jogtracker.presentation.utils.openFragment
 
@@ -53,7 +53,7 @@ class ClickedJogFragment(private val jog: Jog) :
         return true
     }
 
-    fun initButton() {
+    private fun initButton() {
         binding?.toolbar?.setOnClickListener {
             activity?.onBackPressed()
         }

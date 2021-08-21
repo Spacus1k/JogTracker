@@ -2,7 +2,7 @@ package com.example.jogtracker.presentation.recycler
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.jogtracker.domain.Jog
+import com.example.jogtracker.data.network.model.Jog
 
 class JogAdapter(
     private val itemClickListener: OnItemClickListener

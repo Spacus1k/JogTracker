@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.jogtracker.databinding.FragmentEditFormBinding
-import com.example.jogtracker.domain.Jog
+import com.example.jogtracker.data.network.model.Jog
 import com.example.jogtracker.presentation.MainViewModel
 
 class EditFormFragment(var jog: Jog? = null) : Fragment() {
