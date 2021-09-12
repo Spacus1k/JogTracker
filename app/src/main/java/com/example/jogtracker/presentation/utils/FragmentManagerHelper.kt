@@ -17,3 +17,14 @@ fun openFragment(
 
     transaction.commit()
 }
+
+fun removeFragment(
+    fragmentManager: FragmentManager,
+    fragment: Fragment
+) {
+    val transaction = fragmentManager
+        .beginTransaction()
+        .remove(fragment)
+
+    transaction.commit()
+}

@@ -1,21 +1,20 @@
-package com.example.jogtracker.data.network.model
+package com.example.jogtracker.data.network.model.response
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 data class Jog(
     @SerializedName("id")
-    val id: Long,
+    val id: Int,
 
     @SerializedName("user_id")
     val userId: String,
 
     @SerializedName("distance")
-    val distance: Int,
+    val distance: Long,
 
     @SerializedName("time")
-    val time: Long,
+    val time: Int,
 
     @SerializedName("date")
-    val date: Date
+    val date: Long
 )

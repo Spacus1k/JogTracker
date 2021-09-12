@@ -1,26 +1,23 @@
 package com.example.jogtracker.presentation.recycler
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jogtracker.data.network.model.response.Jog
 import com.example.jogtracker.databinding.ItemJogBinding
-import com.example.jogtracker.data.network.model.Jog
+import com.example.jogtracker.presentation.utils.DateConvertor
+import com.example.jogtracker.presentation.utils.UIConstants
 
 class JogViewHolder private constructor(
     binding: ItemJogBinding,
-    private val itemClickListener: JogAdapter.OnItemClickListener
-) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
-
-    init {
-        itemView.setOnClickListener(this)
-    }
+    private val itemClickListener: OnItemClickListener
+) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun createViewHolder(
             parent: ViewGroup,
-            clickListener: JogAdapter.OnItemClickListener
+            clickListener: OnItemClickListener
         ): JogViewHolder {
 
             return JogViewHolder(
@@ -36,14 +33,12 @@ class JogViewHolder private constructor(
     private val jogDistance: TextView = binding.jogDistance
     private val dateView: TextView = binding.jogDate
 
-    override fun onClick(v: View?) {
-        if (absoluteAdapterPosition != RecyclerView.NO_POSITION) {
-            itemClickListener.onItemClick(absoluteAdapterPosition)
-        }
-    }
-
     fun bind(jog: Jog) {
-        jogDistance.text = jog.distance.toString()
-        dateView.text = jog.date.toString()
+        jogDistance.text = (jog.distance.toString() +" "+UIConstants.KILOMETER)
+        dateView.text = DateConvertor.toString(jog.date)
+
+        itemView.setOnClickListener {
+            itemClickListener.onItemClick(jog)
+        }
     }
 }

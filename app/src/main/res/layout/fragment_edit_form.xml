@@ -61,7 +61,7 @@
                 android:textSize="@dimen/text_size_clicked_job_fields" />
 
             <EditText
-                android:id="@+id/etClickedJogDistance"
+                android:id="@+id/editTextDistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -75,7 +75,7 @@
                 android:textSize="@dimen/text_size_clicked_job_fields" />
 
             <EditText
-                android:id="@+id/etClickedItemTime"
+                android:id="@+id/editTextTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -89,7 +89,7 @@
                 android:textSize="@dimen/text_size_clicked_job_fields" />
 
             <EditText
-                android:id="@+id/etClickedItemDate"
+                android:id="@+id/editTextDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_clicked_job_fields"

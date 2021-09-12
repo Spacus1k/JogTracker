@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.jogtracker.databinding.FragmentEditFormBinding
-import com.example.jogtracker.data.network.model.Jog
+import com.example.jogtracker.data.network.model.response.Jog
 import com.example.jogtracker.presentation.MainViewModel
+import com.example.jogtracker.presentation.utils.DateConvertor
 
 class EditFormFragment(var jog: Jog? = null) : Fragment() {
 
@@ -29,8 +30,7 @@ class EditFormFragment(var jog: Jog? = null) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        initEditText()
+        setInfo()
         initButtons()
     }
 
@@ -45,12 +45,12 @@ class EditFormFragment(var jog: Jog? = null) : Fragment() {
         }
     }
 
-    private fun initEditText() {
+    private fun setInfo() {
         jog?.let { jog ->
             binding?.run {
-                etClickedJogDistance.setText(jog.distance)
-                etClickedItemTime.setText(jog.time.toString())
-                etClickedItemDate.setText(jog.date.toString())
+                editTextDistance.setText(jog.distance.toString())
+                editTextTime.setText(jog.time.toString())
+                editTextDate.setText(DateConvertor.toString(jog.date))
             }
         }
     }

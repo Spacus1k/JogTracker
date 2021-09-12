@@ -50,19 +50,14 @@ dependencies {
     def recycler_version = "1.2.1"
     implementation "androidx.recyclerview:recyclerview:$recycler_version"
 
-    //LiveData
-    //def live_data_version = "1.1.1"
-    //implementation "android.arch.lifecycle:extensions:$live_data_version"
-
     // Retrofit
     def retrofit_version = "2.9.0"
-    //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     //OKHttp
     //noinspection GradleDependency
-    def okhttp_version = '4.9.0'
+    def okhttp_version = '4.9.1'
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
@@ -71,12 +66,19 @@ dependencies {
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    // Lifecycles only (without ViewModel or LiveData)
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+//    // LiveData
+//    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+//    // Lifecycles only (without ViewModel or LiveData)
+//    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
     // Saved state module for ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
 
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
+
+    //LiveData
+    def live_data_version = "1.1.1"
+    implementation "android.arch.lifecycle:extensions:$live_data_version"
 }
