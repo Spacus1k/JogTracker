@@ -1,9 +1,11 @@
 package com.example.jogtracker.data.repository
 
+import android.util.Log
 import com.example.jogtracker.data.network.model.request.LoginRequest
 import com.example.jogtracker.data.network.model.response.Jog
 import com.example.jogtracker.data.network.retrofit.JogTrackerApi
 import com.example.jogtracker.data.network.utils.Constants
+import com.example.jogtracker.data.network.utils.TokenHolder
 import com.example.jogtracker.domain.NetworkRepository
 
 class NetworkRepositoryImpl(private val jogTrackerApi: JogTrackerApi) : NetworkRepository {
@@ -18,10 +20,12 @@ class NetworkRepositoryImpl(private val jogTrackerApi: JogTrackerApi) : NetworkR
 
     override suspend fun getJogs(): List<Jog> {
         return try{
+            Log.e("TAG","Jog ${TokenHolder.token}" )
             jogTrackerApi.getJogsList().jogsAndUsers.jogs
         }
         catch (e : Exception){
-            throw NullPointerException("error getJogsList")
+            Log.e("TAG","Jog error" )
+            return mutableListOf()
         }
     }
 }

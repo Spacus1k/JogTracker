@@ -10,10 +10,10 @@ data class Jog(
     val userId: String,
 
     @SerializedName("distance")
-    val distance: Long,
+    val distance: Double,
 
     @SerializedName("time")
-    val time: Int,
+    val time: Long,
 
     @SerializedName("date")
     val date: Long
