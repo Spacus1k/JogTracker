@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.jogtracker.R
 import com.example.jogtracker.data.network.model.response.Jog
 import com.example.jogtracker.databinding.FragmentJogInfoBinding
-import com.example.jogtracker.presentation.MainViewModel
+import com.example.jogtracker.presentation.viewModel.MainViewModel
 import com.example.jogtracker.presentation.utils.DateConvertor
 import com.example.jogtracker.presentation.utils.openFragment
 

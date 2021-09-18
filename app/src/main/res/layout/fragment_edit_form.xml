@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
                 app:titleTextAppearance="@style/ToolbarText"
-                tools:title="Toolbar Name" />
+                app:title="Edit form"/>
 
             <ImageView
                 android:id="@+id/save_button"
@@ -94,7 +94,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_clicked_job_fields"
                 tools:text="date 00.00.0000, time 00:00" />
-
         </LinearLayout>
     </LinearLayout>
 

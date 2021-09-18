@@ -1,4 +1,4 @@
-package com.example.jogtracker.presentation
+package com.example.jogtracker.presentation.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

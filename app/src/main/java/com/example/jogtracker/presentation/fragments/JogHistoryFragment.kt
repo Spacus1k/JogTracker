@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jogtracker.R
 import com.example.jogtracker.data.network.model.response.Jog
 import com.example.jogtracker.databinding.FragmentJogHistoryBinding
-import com.example.jogtracker.presentation.MainViewModel
+import com.example.jogtracker.presentation.viewModel.MainViewModel
 import com.example.jogtracker.presentation.recycler.JogAdapter
 import com.example.jogtracker.presentation.recycler.OnItemClickListener
 import com.example.jogtracker.presentation.utils.openFragment

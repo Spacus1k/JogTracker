@@ -7,4 +7,12 @@
     <string name="time">Time:</string>
     <string name="date">Date:</string>
     <string name="jogs_history">Jogs history</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="name_first">Name</string>
+    <string name="name_last">LastName</string>
+    <string name="email">emailExample@mail.com</string>
+    <string name="jog_info">Jog info</string>
+    <string name="login">Login</string>
+    <string name="uuid">UUID</string>
 </resources>
