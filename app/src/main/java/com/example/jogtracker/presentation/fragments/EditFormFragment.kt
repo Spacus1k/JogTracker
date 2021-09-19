@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.jogtracker.data.network.model.response.Jog
 import com.example.jogtracker.databinding.FragmentEditFormBinding
+import com.example.jogtracker.databinding.FragmentJogHistoryBinding
 import com.example.jogtracker.presentation.viewModel.MainViewModel
 import com.example.jogtracker.presentation.utils.DateConvertor
 
@@ -18,16 +19,17 @@ class EditFormFragment(var jog: Jog? = null) : Fragment() {
     }
 
     private val viewModel = MainViewModel()
-    private var binding: FragmentEditFormBinding? = null
+    private var _binding: FragmentEditFormBinding? = null
+    private val binding: FragmentEditFormBinding get() = _binding!!
     private var datePickerDialog: DatePickerDialog? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentEditFormBinding.inflate(inflater, container, false)
-        return binding?.root
+    ): View {
+        _binding = FragmentEditFormBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,14 +39,14 @@ class EditFormFragment(var jog: Jog? = null) : Fragment() {
     }
 
     private fun initButtons() {
-        binding?.let {
-            it.saveButton.setOnClickListener {
+        with(binding) {
+            saveButton.setOnClickListener {
                 viewModel.updateJog()
             }
-            it.toolbar.setOnClickListener {
+            toolbar.setOnClickListener {
                 activity?.onBackPressed()
             }
-            it.editTextDate.setOnClickListener{
+            editTextDate.setOnClickListener {
                 datePickerDialog?.show()
             }
         }
@@ -52,7 +54,7 @@ class EditFormFragment(var jog: Jog? = null) : Fragment() {
 
     private fun setInfo() {
         jog?.let { jog ->
-            binding?.run {
+            binding.run {
                 editTextDistance.setText(jog.distance.toString())
                 editTextTime.setText(jog.time.toString())
                 editTextDate.setText(DateConvertor.toString(jog.date))

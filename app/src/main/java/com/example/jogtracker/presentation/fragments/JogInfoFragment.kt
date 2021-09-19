@@ -8,10 +8,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.jogtracker.R
 import com.example.jogtracker.data.network.model.response.Jog
+import com.example.jogtracker.databinding.FragmentJogHistoryBinding
 import com.example.jogtracker.databinding.FragmentJogInfoBinding
 import com.example.jogtracker.presentation.viewModel.MainViewModel
 import com.example.jogtracker.presentation.utils.DateConvertor
 import com.example.jogtracker.presentation.utils.openFragment
+import kotlinx.android.synthetic.main.fragment_jog_info.*
 
 class JogInfoFragment(private val jog: Jog) :
     Fragment() {
@@ -22,7 +24,9 @@ class JogInfoFragment(private val jog: Jog) :
 
     //TODO add inject
     private val viewModel = MainViewModel()
-    private var binding: FragmentJogInfoBinding? = null
+    private var _binding: FragmentJogInfoBinding? = null
+    private val binding: FragmentJogInfoBinding get() = _binding!!
+
     private val menuClickListener = Toolbar.OnMenuItemClickListener { item ->
         activity?.let { fragmentActivity ->
             when (item?.itemId) {
@@ -43,9 +47,9 @@ class JogInfoFragment(private val jog: Jog) :
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentJogInfoBinding.inflate(inflater, container, false)
-        return binding?.root
+    ): View {
+        _binding = FragmentJogInfoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +59,7 @@ class JogInfoFragment(private val jog: Jog) :
     }
 
     private fun initButton() {
-        binding?.toolbar?.run {
+        binding.toolbar.run {
             setOnClickListener {
                 activity?.onBackPressed()
             }
@@ -64,7 +68,7 @@ class JogInfoFragment(private val jog: Jog) :
     }
 
     private fun setJogInfo() {
-        binding?.run {
+        binding.run {
             jogDistance.text = jog.distance.toString()
             jogDate.text = DateConvertor.toString(jog.date)
             jogTime.text = jog.time.toString()

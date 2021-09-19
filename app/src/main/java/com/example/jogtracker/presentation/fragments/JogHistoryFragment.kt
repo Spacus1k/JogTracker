@@ -22,7 +22,8 @@ class JogHistoryFragment : Fragment() {
 
     //TODO add inject
     private val viewModel = MainViewModel()
-    private var binding: FragmentJogHistoryBinding? = null
+    private var _binding: FragmentJogHistoryBinding? = null
+    private val binding: FragmentJogHistoryBinding get() = _binding!!
     private val itemClickListener = object : OnItemClickListener {
         override fun onItemClick(clickedItem: Jog) {
             openJogInfoFragment(JogInfoFragment.newInstance(clickedItem))
@@ -34,9 +35,9 @@ class JogHistoryFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentJogHistoryBinding.inflate(inflater, container, false)
-        return binding?.root
+    ): View {
+        _binding = FragmentJogHistoryBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,20 +54,18 @@ class JogHistoryFragment : Fragment() {
     }
 
     private fun initButtons() {
-        binding?.addButton?.setOnClickListener {
-            activity?.let {
-                openFragment(
-                    it.supportFragmentManager,
-                    R.id.activity_fragment_container,
-                    EditFormFragment.newInstance(),
-                    true
-                )
-            }
+        binding.addButton.setOnClickListener {
+            openFragment(
+                requireActivity().supportFragmentManager,
+                R.id.activity_fragment_container,
+                EditFormFragment.newInstance(),
+                true
+            )
         }
     }
 
     private fun initRecyclerView() {
-        binding?.jogs?.run {
+        binding.jogs.run {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             adapter = this@JogHistoryFragment.adapter
@@ -74,12 +73,10 @@ class JogHistoryFragment : Fragment() {
     }
 
     private fun openJogInfoFragment(fragment: JogInfoFragment) {
-        activity?.let {
-            openFragment(
-                it.supportFragmentManager,
-                R.id.activity_fragment_container,
-                fragment
-            )
-        }
+        openFragment(
+            requireActivity().supportFragmentManager,
+            R.id.activity_fragment_container,
+            fragment
+        )
     }
 }

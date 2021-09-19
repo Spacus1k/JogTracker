@@ -23,8 +23,8 @@ class NetworkRepositoryImpl(private val jogTrackerApi: JogTrackerApi) : NetworkR
             Log.e("TAG","Jog ${TokenHolder.token}" )
             jogTrackerApi.getJogsList().jogsAndUsers.jogs
         }
-        catch (e : Exception){
-            Log.e("TAG","Jog error" )
+        catch (exception : Exception){
+            exception.printStackTrace()
             return mutableListOf()
         }
     }

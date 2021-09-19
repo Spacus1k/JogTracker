@@ -1,8 +1,8 @@
 package com.example.jogtracker.data.network.retrofit
 
-import com.example.jogtracker.data.network.utils.Constants.BASE_URL
 import com.example.jogtracker.data.network.utils.Constants.CONNECT_TIMEOUT
 import com.example.jogtracker.data.network.utils.Constants.READ_WRITE_TIMEOUT
+import com.example.jogtracker.data.network.utils.URL
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -22,7 +22,7 @@ object RetrofitClient {
 
     private fun getClient() =
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(URL.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(getOkhttpClient())
             .build()

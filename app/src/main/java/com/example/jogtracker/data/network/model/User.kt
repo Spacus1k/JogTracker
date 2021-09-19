@@ -1,4 +1,4 @@
-package com.example.jogtracker.domain
+package com.example.jogtracker.data.network.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,8 +1,8 @@
 package com.example.jogtracker.presentation.activity
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jogtracker.R
@@ -19,8 +19,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
-    private val bindingRoot by lazy { binding.root }
-
     private val navigationItemSelectedListener by lazy {
         NavigationView.OnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -34,21 +32,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(bindingRoot)
-        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
+        setContentView(binding.root)
+        initNavView()
 
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        binding.navView.setNavigationItemSelectedListener(navigationItemSelectedListener)
         openFragment(
             supportFragmentManager,
             R.id.activity_fragment_container,
             JogHistoryFragment.newInstance(),
             true
         )
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -64,4 +61,15 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+
+    fun initNavView(){
+        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.navView.setNavigationItemSelectedListener(navigationItemSelectedListener)
+    }
 }

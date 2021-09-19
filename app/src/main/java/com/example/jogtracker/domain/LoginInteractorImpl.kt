@@ -8,13 +8,13 @@ class LoginInteractorImpl(
     private val networkRepository: NetworkRepository
 ) : LoginInteractor {
 
-    override suspend fun loginByUUID(uuid: String):String = coroutineScope {
-        val result = networkRepository.loginByUUID(uuid)?:Constants.ERROR
+    override suspend fun loginByUUID(uuid: String): String {
+        val result = networkRepository.loginByUUID(uuid)
 
         if (result != Constants.ERROR) {
             setToken(result)
         }
-        return@coroutineScope result
+        return result
     }
 
     override fun setToken(token: String) {

@@ -5,7 +5,7 @@ import com.example.jogtracker.data.network.utils.TokenHolder
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class CustomInterceptor() : Interceptor {
+class CustomInterceptor: Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val requestBuilder = chain.request().newBuilder()
@@ -14,7 +14,6 @@ class CustomInterceptor() : Interceptor {
         if(TokenHolder.token!=Constants.ERROR){
             requestBuilder.addHeader("Authorization", "Bearer ${TokenHolder.token}")
         }
-
         return chain.proceed(requestBuilder.build())
     }
 }
